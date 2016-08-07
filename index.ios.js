@@ -14,7 +14,7 @@ class TodoApp extends Component {
       <NavigatorIOS
         style={ styles.navContainer }
         initialRoute={{
-          title: 'My Application',
+          title: 'React Native IOS',
           component: TodoProject
         }} />
     );
