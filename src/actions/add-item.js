@@ -12,13 +12,3 @@ export function addItem(item) {
     };
   }
 }
-
-// _handleButton(text) {
-//   // Get reference of the current state
-//   let todos = this.state.todos;
-//   // Check if task is not added yet
-//   if (todos.indexOf(text) === - 1) {
-//     todos.push(text);
-//     this.setState({ todos: todos });
-//   }
-// }

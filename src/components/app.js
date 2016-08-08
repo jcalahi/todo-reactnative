@@ -16,7 +16,6 @@ let store = createStore(reducers);
 
 class TodoProject extends Component {
   render() {
-    // todo: wrap tasks in a ListView component
     return (
       <Provider store={ store }>
         <View style={ styles.mainContainer }>
