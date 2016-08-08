@@ -2,8 +2,12 @@
 
 This sample app is built using React Native and Redux.
 
-Instructions:
+#Instructions:
 
 1. Clone the repo
 2. Go to root project folder then run 'npm install'
 3. On the same directory, type 'react-native run-ios'
+
+#Todo:
+
+1. Wrap Swipeable items into ListView
