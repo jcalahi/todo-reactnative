@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-
 import Swipeout from 'react-native-swipeout';
 
 import styles from '../styles/styles';
@@ -31,4 +30,4 @@ class TodoItem extends Component {
   }
 }
 
-module.exports = TodoItem;
+export default TodoItem;

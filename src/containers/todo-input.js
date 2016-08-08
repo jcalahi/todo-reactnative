@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { View, TouchableHighlight, TextInput, Text } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
+import { addItem } from '../actions/add-item';
 import styles from '../styles/styles';
 
 class TodoInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      text: 'Type something here'
-    }
+    this.state = { text: '' };
   }
   render() {
     return (
@@ -16,13 +17,14 @@ class TodoInput extends Component {
         <TextInput
           style={ styles.textInput }
           value={ this.state.text }
-          maxLength={ 20 }
+          placeholder='Write an item here'
           clearTextOnFocus={ true }
+          maxLength={ 20 }
           onChangeText={ (e) => { this.handleOnChangeText(e) }} />
         <TouchableHighlight
           style={ styles.addButton }
           underlayColor='#99D9F4'
-          onPress={ () => { this.handleAddButton(this.state.text) }}>
+          onPress={ () => { [this.props.addItem(this.state.text), this.clearText() ] }}>
           <Text style={ styles.buttonText }>
             Add
           </Text>
@@ -33,15 +35,21 @@ class TodoInput extends Component {
   handleOnChangeText(e) {
     this.setState({ text: e });
   }
-  handleAddButton(text) {
-    // if text is null, don't do anything
-    if (!text) {
-      return;
-    }
-    this.props.onButtonClicked(text);
-    // Reset after assigning
-    this.setState({ text: null });
+  // Reset the field
+  clearText() {
+    this.setState({ text: '' });
   }
 }
 
-module.exports = TodoInput;
+// Not used in thie component
+// function mapStateToProps(state) {
+//   return {
+//     todoList: state.todoList.todos
+//   };
+// }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addItem: addItem }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(TodoInput);

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { AppRegistry, NavigatorIOS } from 'react-native';
 
 // Local imports
-import TodoProject from './src/components/todo-project';
+import App from './src/components/app';
 
 // Styles
 import styles from './src/styles/styles';
@@ -14,8 +14,8 @@ class TodoApp extends Component {
       <NavigatorIOS
         style={ styles.navContainer }
         initialRoute={{
-          title: 'React Native IOS',
-          component: TodoProject
+          title: 'React Native and Redux',
+          component: App
         }} />
     );
   }
