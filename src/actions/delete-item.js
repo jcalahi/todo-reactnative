@@ -1,6 +1,8 @@
+import * as types from '../constants/constants';
+
 export function deleteItem(item) {
   return {
-    type: 'DELETE_ITEM',
+    type: types.DELETE_ITEM,
     payload: item
   };
 }

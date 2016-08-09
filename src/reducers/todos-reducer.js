@@ -1,10 +1,12 @@
+import * as types from '../constants/constants';
+
 const initialState = {
   todos: []
 };
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case 'ADD_ITEM': {
+    case types.ADD_ITEM: {
       let arr = state.todos;
       // Check if the item is not added yet
       if (arr.indexOf(action.payload) === -1) {
@@ -13,13 +15,13 @@ export default function(state = initialState, action) {
         return { todos: [...state.todos] };
       }
     }
-    case 'DELETE_ITEM': {
+    case types.DELETE_ITEM: {
       let arr = state.todos;
       arr.splice(arr.indexOf(action.payload), 1);
       state.todos = arr;
       return { todos: [...state.todos]};
     }
-    case 'NULL_ITEM': {
+    case types.NULL_ITEM: {
       console.log('field is empty');
       // do something
       return { todos: [...state.todos]};

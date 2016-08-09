@@ -1,13 +1,15 @@
+import * as types from '../constants/constants';
+
 export function addItem(item) {
   // Do nothing when field is empty
   if (item === undefined || item === null || item === '') {
     return {
-      type: 'NULL_ITEM',
+      type: types.NULL_ITEM,
       payload: item
     };
   } else {
     return {
-      type: 'ADD_ITEM',
+      type: types.ADD_ITEM,
       payload: item
     };
   }
