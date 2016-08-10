@@ -23,7 +23,7 @@ class TodoInput extends Component {
         <TouchableHighlight
           style={ styles.addButton }
           underlayColor='#99D9F4'
-          onPress={ () => { [this.props.addItem(this.props.inputValue), this.props.resetField() ] }}>
+          onPress={ () => { [this.props.addItem(this.props.inputValue), this.props.resetField()] }}>
           <Text style={ styles.buttonText }>
             Add
           </Text>
