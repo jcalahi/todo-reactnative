@@ -4,27 +4,26 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { addItem } from '../actions/add-item';
+import { resetField } from '../actions/reset-field';
+import { onInputChange } from '../actions/input-change';
+
 import styles from '../styles/styles';
 
 class TodoInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: '' };
-  }
   render() {
     return (
       <View style={ styles.flowRight }>
         <TextInput
           style={ styles.textInput }
-          value={ this.state.text }
+          value={ this.props.inputValue }
           placeholder='Write an item here'
           clearTextOnFocus={ true }
           maxLength={ 20 }
-          onChangeText={ (e) => { this.handleOnChangeText(e) }} />
+          onChangeText={ (e) => { this.props.onInputChange(e) }} />
         <TouchableHighlight
           style={ styles.addButton }
           underlayColor='#99D9F4'
-          onPress={ () => { [this.props.addItem(this.state.text), this.clearText() ] }}>
+          onPress={ () => { [this.props.addItem(this.props.inputValue), this.props.resetField() ] }}>
           <Text style={ styles.buttonText }>
             Add
           </Text>
@@ -32,24 +31,20 @@ class TodoInput extends Component {
       </View>
     );
   }
-  handleOnChangeText(e) {
-    this.setState({ text: e });
-  }
-  // Reset the field
-  clearText() {
-    this.setState({ text: '' });
-  }
 }
 
-// Not used in thie component
-// function mapStateToProps(state) {
-//   return {
-//     todoList: state.todoList.todos
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+    inputValue: state.inputValue
+  };
+}
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addItem: addItem }, dispatch);
+  return bindActionCreators({
+    addItem: addItem,
+    onInputChange: onInputChange,
+    resetField: resetField
+  }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(TodoInput);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoInput);
